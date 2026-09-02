@@ -1,0 +1,223 @@
+[2026-09-02 08:59:21,450] [INFO] ================================================================================
+[2026-09-02 08:59:21,451] [INFO] DISTILLED QUANTIZATION-AWARE TinyML PIPELINE INITIALIZED
+[2026-09-02 08:59:21,451] [INFO] Execution Start Time : 2026-09-02 08:59:21
+[2026-09-02 08:59:21,452] [INFO] Target Device        : cpu (CPU)
+[2026-09-02 08:59:21,453] [INFO] Working Directory    : /workspace/notebooks/KLUST/WP35_KLUST2
+[2026-09-02 08:59:21,453] [INFO] Logging To           : /workspace/notebooks/KLUST/WP35_KLUST2/data/logs/pipeline_run_20260902_085921.log
+[2026-09-02 08:59:21,454] [INFO] ================================================================================
+[2026-09-02 08:59:21,454] [INFO] 
+--- Scanning Datasets Directory ---
+[2026-09-02 08:59:21,456] [INFO] Found Dataset Artifact: wustl-ehms-2020_with_attacks_categories.csv (3.76 MB)
+[2026-09-02 08:59:21,457] [INFO] Found Dataset Artifact: .ipynb_checkpoints (0.00 MB)
+[2026-09-02 08:59:21,457] [INFO] Found Dataset Artifact: CIC_IoMT_2024_WiFi_MQTT_train.parquet (118.15 MB)
+[2026-09-02 08:59:21,458] [INFO] Found Dataset Artifact: CIC_IoMT_2024_WiFi_MQTT_train.csv (1616.10 MB)
+[2026-09-02 08:59:21,458] [INFO] Found Dataset Artifact: CIC_IoMT_2024_WiFi_MQTT_test.parquet (21.08 MB)
+[2026-09-02 08:59:21,459] [INFO] Found Dataset Artifact: CIC_IoMT_2024_WiFi_MQTT_test.csv (360.17 MB)
+[2026-09-02 08:59:21,460] [INFO] 
+Directory Hierarchy Initialized Successfully:
+[2026-09-02 08:59:21,460] [INFO]   • BASE         -> ./
+[2026-09-02 08:59:21,461] [INFO]   • DATASETS     -> datasets
+[2026-09-02 08:59:21,462] [INFO]   • DATA         -> data
+[2026-09-02 08:59:21,462] [INFO]   • ANALYSIS     -> data/analysis
+[2026-09-02 08:59:21,463] [INFO]   • FIGURES      -> data/figures
+[2026-09-02 08:59:21,463] [INFO]   • LOGS         -> data/logs
+[2026-09-02 08:59:21,464] [INFO]   • CHECKPOINTS  -> data/checkpoints
+[2026-09-02 08:59:21,464] [INFO]   • TABLES       -> data/tables
+[2026-09-02 08:59:21,465] [INFO] ================================================================================
+[2026-09-02 08:59:21,465] [INFO] BLOCK 1 COMPLETED: Environment ready for Block 2 (Data Preprocessing & Sliding Windows).
+[2026-09-02 08:59:21,496] [INFO] ================================================================================
+[2026-09-02 08:59:21,496] [INFO] STARTING BLOCK 2: DATA INGESTION & TEMPORAL SEQUENCE PIPELINE
+[2026-09-02 08:59:21,497] [INFO] ================================================================================
+[2026-09-02 08:59:21,499] [INFO] Loading fast parquet format: CIC_IoMT_2024_WiFi_MQTT_train.parquet
+[2026-09-02 08:59:24,053] [INFO] Loading fast parquet format: CIC_IoMT_2024_WiFi_MQTT_test.parquet
+[2026-09-02 08:59:24,592] [INFO] CIC-IoMT-2024 Train Shape: (7160831, 46) | Test Shape: (1614182, 46)
+[2026-09-02 08:59:24,593] [INFO] Loading WUSTL-EHMS-2020: wustl-ehms-2020_with_attacks_categories.csv
+[2026-09-02 08:59:24,693] [INFO] WUSTL-EHMS-2020 Raw Shape: (16318, 45)
+[2026-09-02 08:59:24,693] [INFO] 
+--- Preprocessing CIC-IoMT-2024 (Isolating MQTT & Low-Power Telemetry) ---
+[2026-09-02 08:59:24,695] [INFO] CIC-IoMT-2024 Target Label Column: 'label'
+[2026-09-02 08:59:24,696] [INFO] Aligned Network Feature Dimensions: 45 numeric features
+[2026-09-02 08:59:33,617] [INFO] CIC-IoMT-2024 Unique Classes (52): ['ARP_Spoofing_train', 'Benign_train', 'MQTT-DDoS-Connect_Flood_train', 'MQTT-DDoS-Publish_Flood_train', 'MQTT-DoS-Connect_Flood_train', 'MQTT-DoS-Publish_Flood_train', 'MQTT-Malformed_Data_train', 'Recon-OS_Scan_train', 'Recon-Ping_Sweep_train', 'Recon-Port_Scan_train', 'Recon-VulScan_train', 'TCP_IP-DDoS-ICMP1_train', 'TCP_IP-DDoS-ICMP2_train', 'TCP_IP-DDoS-ICMP3_train', 'TCP_IP-DDoS-ICMP4_train', 'TCP_IP-DDoS-ICMP5_train', 'TCP_IP-DDoS-ICMP6_train', 'TCP_IP-DDoS-ICMP7_train', 'TCP_IP-DDoS-ICMP8_train', 'TCP_IP-DDoS-SYN1_train', 'TCP_IP-DDoS-SYN2_train', 'TCP_IP-DDoS-SYN3_train', 'TCP_IP-DDoS-SYN4_train', 'TCP_IP-DDoS-TCP1_train', 'TCP_IP-DDoS-TCP2_train', 'TCP_IP-DDoS-TCP3_train', 'TCP_IP-DDoS-TCP4_train', 'TCP_IP-DDoS-UDP1_train', 'TCP_IP-DDoS-UDP2_train', 'TCP_IP-DDoS-UDP3_train', 'TCP_IP-DDoS-UDP4_train', 'TCP_IP-DDoS-UDP5_train', 'TCP_IP-DDoS-UDP6_train', 'TCP_IP-DDoS-UDP7_train', 'TCP_IP-DDoS-UDP8_train', 'TCP_IP-DoS-ICMP1_train', 'TCP_IP-DoS-ICMP2_train', 'TCP_IP-DoS-ICMP3_train', 'TCP_IP-DoS-ICMP4_train', 'TCP_IP-DoS-SYN1_train', 'TCP_IP-DoS-SYN2_train', 'TCP_IP-DoS-SYN3_train', 'TCP_IP-DoS-SYN4_train', 'TCP_IP-DoS-TCP1_train', 'TCP_IP-DoS-TCP2_train', 'TCP_IP-DoS-TCP3_train', 'TCP_IP-DoS-TCP4_train', 'TCP_IP-DoS-UDP1_train', 'TCP_IP-DoS-UDP2_train', 'TCP_IP-DoS-UDP3_train', 'TCP_IP-DoS-UDP4_train', 'Unknown']
+[2026-09-02 08:59:33,618] [INFO] 
+--- Preprocessing WUSTL-EHMS-2020 (Biometric & Sensor Stream) ---
+[2026-09-02 08:59:33,620] [INFO] WUSTL-EHMS-2020 Target Label Column: 'Label'
+[2026-09-02 08:59:33,621] [INFO] WUSTL-EHMS-2020 Numeric Feature Dimensions: 36 features
+[2026-09-02 08:59:33,646] [INFO] WUSTL-EHMS-2020 Unique Classes (2): ['0', '1']
+[2026-09-02 08:59:33,660] [INFO] WUSTL-EHMS-2020 Train Split: (13054, 46) | Test Split: (3264, 46)
+[2026-09-02 08:59:40,085] [INFO] 
+--- Generating Journal-Ready Figures & Summary Tables ---
+[2026-09-02 08:59:40,994] [INFO] Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[2026-09-02 08:59:41,000] [INFO] Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[2026-09-02 08:59:42,210] [INFO] Saved publication figures -> /workspace/notebooks/KLUST/WP35_KLUST2/data/figures
+[2026-09-02 08:59:42,211] [INFO] Saved dataset summary tables -> /workspace/notebooks/KLUST/WP35_KLUST2/data/tables
+[2026-09-02 08:59:42,212] [INFO] 
+--- Constructing PyTorch Temporal Sequence DataLoaders (Window=10, Step=2) ---
+[2026-09-02 08:59:42,254] [INFO] WUSTL Sensor Edge Train Sequences: 6523 | Batches: 50
+[2026-09-02 08:59:42,255] [INFO] WUSTL Sensor Edge Test Sequences : 1628 | Batches: 13
+[2026-09-02 08:59:42,258] [INFO] Verification Sample Batch -> X: torch.Size([128, 10, 36]) (Batch, Seq, Feat) | y: torch.Size([128])
+[2026-09-02 08:59:42,368] [INFO] ================================================================================
+[2026-09-02 08:59:42,370] [INFO] BLOCK 2 COMPLETED: Data ingested, scaled, windowed, and DataLoaders initialized.
+[2026-09-02 08:59:42,372] [INFO] ================================================================================
+[2026-09-02 08:59:42,392] [INFO] ================================================================================
+[2026-09-02 08:59:42,393] [INFO] STARTING BLOCK 3: HYBRID ARCHITECTURE & PARAMETER PROFILING
+[2026-09-02 08:59:42,394] [INFO] ================================================================================
+[2026-09-02 08:59:42,396] [INFO] Initializing models with Input Features: 36, Output Classes: 2
+[2026-09-02 08:59:42,407] [INFO] 
+--- Architectural Footprint Comparison ---
+[2026-09-02 08:59:42,408] [INFO] Teacher Model (TGCN Oracle) Total Parameters: 607,938
+[2026-09-02 08:59:42,409] [INFO] Student Model (TinyML Edge) Trainable Parameters: 7,726
+[2026-09-02 08:59:42,409] [INFO] Model Compression Factor: 78.69X smaller
+[2026-09-02 08:59:42,410] [INFO] VALIDATION: Student model passes TinyML footprint constraint (< 50K parameters).
+[2026-09-02 08:59:42,411] [INFO] ================================================================================
+[2026-09-02 08:59:42,411] [INFO] BLOCK 3 COMPLETED: Architectures defined. Ready for Block 4 (Knowledge Distillation Engine).
+[2026-09-02 08:59:42,413] [INFO] ================================================================================
+[2026-09-02 08:59:42,431] [INFO] ================================================================================
+[2026-09-02 08:59:42,431] [INFO] STARTING BLOCK 4: CORE TRAINING ENGINE (KD & QAT)
+[2026-09-02 08:59:42,432] [INFO] ================================================================================
+[2026-09-02 08:59:43,361] [INFO] Initiating KD Training for 100 Epochs...
+[2026-09-02 08:59:44,848] [INFO] KD Epoch [01/100] - Train Loss: 0.2586 | Val Loss: 0.2527 | Val Acc: 0.8747
+[2026-09-02 08:59:46,355] [INFO] KD Epoch [02/100] - Train Loss: 0.2376 | Val Loss: 0.2449 | Val Acc: 0.8759
+[2026-09-02 08:59:47,849] [INFO] KD Epoch [03/100] - Train Loss: 0.2353 | Val Loss: 0.2428 | Val Acc: 0.8778
+[2026-09-02 08:59:49,346] [INFO] KD Epoch [04/100] - Train Loss: 0.2319 | Val Loss: 0.2385 | Val Acc: 0.8925
+[2026-09-02 08:59:50,821] [INFO] KD Epoch [05/100] - Train Loss: 0.2307 | Val Loss: 0.2367 | Val Acc: 0.9281
+[2026-09-02 08:59:52,298] [INFO] KD Epoch [06/100] - Train Loss: 0.2308 | Val Loss: 0.2347 | Val Acc: 0.9312
+[2026-09-02 08:59:53,775] [INFO] KD Epoch [07/100] - Train Loss: 0.2304 | Val Loss: 0.2346 | Val Acc: 0.9312
+[2026-09-02 08:59:55,285] [INFO] KD Epoch [08/100] - Train Loss: 0.2294 | Val Loss: 0.2339 | Val Acc: 0.9312
+[2026-09-02 08:59:56,985] [INFO] KD Epoch [09/100] - Train Loss: 0.2289 | Val Loss: 0.2326 | Val Acc: 0.9324
+[2026-09-02 08:59:58,520] [INFO] KD Epoch [10/100] - Train Loss: 0.2282 | Val Loss: 0.2324 | Val Acc: 0.9300
+[2026-09-02 09:00:00,078] [INFO] KD Epoch [11/100] - Train Loss: 0.2286 | Val Loss: 0.2322 | Val Acc: 0.9300
+[2026-09-02 09:00:01,741] [INFO] KD Epoch [12/100] - Train Loss: 0.2278 | Val Loss: 0.2323 | Val Acc: 0.9318
+[2026-09-02 09:00:03,331] [INFO] KD Epoch [13/100] - Train Loss: 0.2278 | Val Loss: 0.2315 | Val Acc: 0.9300
+[2026-09-02 09:00:04,846] [INFO] KD Epoch [14/100] - Train Loss: 0.2273 | Val Loss: 0.2313 | Val Acc: 0.9318
+[2026-09-02 09:00:06,383] [INFO] KD Epoch [15/100] - Train Loss: 0.2271 | Val Loss: 0.2312 | Val Acc: 0.9318
+[2026-09-02 09:00:07,881] [INFO] KD Epoch [16/100] - Train Loss: 0.2271 | Val Loss: 0.2312 | Val Acc: 0.9324
+[2026-09-02 09:00:09,381] [INFO] KD Epoch [17/100] - Train Loss: 0.2272 | Val Loss: 0.2312 | Val Acc: 0.9324
+[2026-09-02 09:00:10,898] [INFO] KD Epoch [18/100] - Train Loss: 0.2272 | Val Loss: 0.2310 | Val Acc: 0.9324
+[2026-09-02 09:00:12,412] [INFO] KD Epoch [19/100] - Train Loss: 0.2279 | Val Loss: 0.2309 | Val Acc: 0.9324
+[2026-09-02 09:00:13,912] [INFO] KD Epoch [20/100] - Train Loss: 0.2264 | Val Loss: 0.2308 | Val Acc: 0.9337
+[2026-09-02 09:00:15,419] [INFO] KD Epoch [21/100] - Train Loss: 0.2266 | Val Loss: 0.2310 | Val Acc: 0.9324
+[2026-09-02 09:00:16,942] [INFO] KD Epoch [22/100] - Train Loss: 0.2269 | Val Loss: 0.2308 | Val Acc: 0.9324
+[2026-09-02 09:00:18,490] [INFO] KD Epoch [23/100] - Train Loss: 0.2272 | Val Loss: 0.2311 | Val Acc: 0.9337
+[2026-09-02 09:00:19,987] [INFO] KD Epoch [24/100] - Train Loss: 0.2268 | Val Loss: 0.2307 | Val Acc: 0.9337
+[2026-09-02 09:00:21,486] [INFO] KD Epoch [25/100] - Train Loss: 0.2263 | Val Loss: 0.2307 | Val Acc: 0.9349
+[2026-09-02 09:00:23,107] [INFO] KD Epoch [26/100] - Train Loss: 0.2265 | Val Loss: 0.2306 | Val Acc: 0.9343
+[2026-09-02 09:00:24,610] [INFO] KD Epoch [27/100] - Train Loss: 0.2262 | Val Loss: 0.2307 | Val Acc: 0.9337
+[2026-09-02 09:00:26,146] [INFO] KD Epoch [28/100] - Train Loss: 0.2269 | Val Loss: 0.2308 | Val Acc: 0.9337
+[2026-09-02 09:00:27,670] [INFO] KD Epoch [29/100] - Train Loss: 0.2267 | Val Loss: 0.2307 | Val Acc: 0.9337
+[2026-09-02 09:00:29,179] [INFO] KD Epoch [30/100] - Train Loss: 0.2264 | Val Loss: 0.2306 | Val Acc: 0.9349
+[2026-09-02 09:00:30,684] [INFO] KD Epoch [31/100] - Train Loss: 0.2270 | Val Loss: 0.2307 | Val Acc: 0.9337
+[2026-09-02 09:00:32,268] [INFO] KD Epoch [32/100] - Train Loss: 0.2267 | Val Loss: 0.2308 | Val Acc: 0.9337
+[2026-09-02 09:00:33,789] [INFO] KD Epoch [33/100] - Train Loss: 0.2269 | Val Loss: 0.2307 | Val Acc: 0.9324
+[2026-09-02 09:00:35,294] [INFO] KD Epoch [34/100] - Train Loss: 0.2267 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:00:36,830] [INFO] KD Epoch [35/100] - Train Loss: 0.2267 | Val Loss: 0.2305 | Val Acc: 0.9337
+[2026-09-02 09:00:38,335] [INFO] KD Epoch [36/100] - Train Loss: 0.2265 | Val Loss: 0.2306 | Val Acc: 0.9343
+[2026-09-02 09:00:39,830] [INFO] KD Epoch [37/100] - Train Loss: 0.2268 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:00:41,355] [INFO] KD Epoch [38/100] - Train Loss: 0.2272 | Val Loss: 0.2305 | Val Acc: 0.9343
+[2026-09-02 09:00:42,865] [INFO] KD Epoch [39/100] - Train Loss: 0.2268 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:00:44,361] [INFO] KD Epoch [40/100] - Train Loss: 0.2263 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:00:45,897] [INFO] KD Epoch [41/100] - Train Loss: 0.2266 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:00:47,405] [INFO] KD Epoch [42/100] - Train Loss: 0.2267 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:00:48,923] [INFO] KD Epoch [43/100] - Train Loss: 0.2270 | Val Loss: 0.2306 | Val Acc: 0.9324
+[2026-09-02 09:00:50,425] [INFO] KD Epoch [44/100] - Train Loss: 0.2272 | Val Loss: 0.2307 | Val Acc: 0.9312
+[2026-09-02 09:00:51,931] [INFO] KD Epoch [45/100] - Train Loss: 0.2267 | Val Loss: 0.2306 | Val Acc: 0.9330
+[2026-09-02 09:00:53,427] [INFO] KD Epoch [46/100] - Train Loss: 0.2267 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:00:54,926] [INFO] KD Epoch [47/100] - Train Loss: 0.2267 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:00:56,451] [INFO] KD Epoch [48/100] - Train Loss: 0.2267 | Val Loss: 0.2307 | Val Acc: 0.9337
+[2026-09-02 09:00:57,953] [INFO] KD Epoch [49/100] - Train Loss: 0.2266 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:00:59,452] [INFO] KD Epoch [50/100] - Train Loss: 0.2270 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:00,959] [INFO] KD Epoch [51/100] - Train Loss: 0.2268 | Val Loss: 0.2305 | Val Acc: 0.9343
+[2026-09-02 09:01:02,539] [INFO] KD Epoch [52/100] - Train Loss: 0.2271 | Val Loss: 0.2305 | Val Acc: 0.9349
+[2026-09-02 09:01:04,071] [INFO] KD Epoch [53/100] - Train Loss: 0.2269 | Val Loss: 0.2305 | Val Acc: 0.9343
+[2026-09-02 09:01:05,575] [INFO] KD Epoch [54/100] - Train Loss: 0.2265 | Val Loss: 0.2307 | Val Acc: 0.9337
+[2026-09-02 09:01:07,123] [INFO] KD Epoch [55/100] - Train Loss: 0.2266 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:08,636] [INFO] KD Epoch [56/100] - Train Loss: 0.2267 | Val Loss: 0.2308 | Val Acc: 0.9337
+[2026-09-02 09:01:10,137] [INFO] KD Epoch [57/100] - Train Loss: 0.2266 | Val Loss: 0.2307 | Val Acc: 0.9337
+[2026-09-02 09:01:11,649] [INFO] KD Epoch [58/100] - Train Loss: 0.2268 | Val Loss: 0.2307 | Val Acc: 0.9330
+[2026-09-02 09:01:13,166] [INFO] KD Epoch [59/100] - Train Loss: 0.2262 | Val Loss: 0.2305 | Val Acc: 0.9337
+[2026-09-02 09:01:14,664] [INFO] KD Epoch [60/100] - Train Loss: 0.2266 | Val Loss: 0.2306 | Val Acc: 0.9318
+[2026-09-02 09:01:16,186] [INFO] KD Epoch [61/100] - Train Loss: 0.2268 | Val Loss: 0.2306 | Val Acc: 0.9343
+[2026-09-02 09:01:17,682] [INFO] KD Epoch [62/100] - Train Loss: 0.2266 | Val Loss: 0.2305 | Val Acc: 0.9349
+[2026-09-02 09:01:19,191] [INFO] KD Epoch [63/100] - Train Loss: 0.2265 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:20,690] [INFO] KD Epoch [64/100] - Train Loss: 0.2272 | Val Loss: 0.2305 | Val Acc: 0.9330
+[2026-09-02 09:01:22,192] [INFO] KD Epoch [65/100] - Train Loss: 0.2268 | Val Loss: 0.2305 | Val Acc: 0.9349
+[2026-09-02 09:01:23,690] [INFO] KD Epoch [66/100] - Train Loss: 0.2268 | Val Loss: 0.2307 | Val Acc: 0.9330
+[2026-09-02 09:01:25,188] [INFO] KD Epoch [67/100] - Train Loss: 0.2270 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:26,714] [INFO] KD Epoch [68/100] - Train Loss: 0.2266 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:28,240] [INFO] KD Epoch [69/100] - Train Loss: 0.2262 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:29,745] [INFO] KD Epoch [70/100] - Train Loss: 0.2268 | Val Loss: 0.2307 | Val Acc: 0.9337
+[2026-09-02 09:01:31,252] [INFO] KD Epoch [71/100] - Train Loss: 0.2268 | Val Loss: 0.2307 | Val Acc: 0.9337
+[2026-09-02 09:01:32,849] [INFO] KD Epoch [72/100] - Train Loss: 0.2264 | Val Loss: 0.2305 | Val Acc: 0.9343
+[2026-09-02 09:01:34,368] [INFO] KD Epoch [73/100] - Train Loss: 0.2269 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:35,887] [INFO] KD Epoch [74/100] - Train Loss: 0.2261 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:37,422] [INFO] KD Epoch [75/100] - Train Loss: 0.2265 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:39,020] [INFO] KD Epoch [76/100] - Train Loss: 0.2266 | Val Loss: 0.2306 | Val Acc: 0.9349
+[2026-09-02 09:01:40,535] [INFO] KD Epoch [77/100] - Train Loss: 0.2266 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:42,060] [INFO] KD Epoch [78/100] - Train Loss: 0.2269 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:43,619] [INFO] KD Epoch [79/100] - Train Loss: 0.2265 | Val Loss: 0.2305 | Val Acc: 0.9337
+[2026-09-02 09:01:45,163] [INFO] KD Epoch [80/100] - Train Loss: 0.2265 | Val Loss: 0.2305 | Val Acc: 0.9343
+[2026-09-02 09:01:46,774] [INFO] KD Epoch [81/100] - Train Loss: 0.2268 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:48,276] [INFO] KD Epoch [82/100] - Train Loss: 0.2266 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:49,796] [INFO] KD Epoch [83/100] - Train Loss: 0.2261 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:01:51,378] [INFO] KD Epoch [84/100] - Train Loss: 0.2266 | Val Loss: 0.2305 | Val Acc: 0.9349
+[2026-09-02 09:01:52,876] [INFO] KD Epoch [85/100] - Train Loss: 0.2267 | Val Loss: 0.2307 | Val Acc: 0.9324
+[2026-09-02 09:01:54,379] [INFO] KD Epoch [86/100] - Train Loss: 0.2268 | Val Loss: 0.2306 | Val Acc: 0.9330
+[2026-09-02 09:01:55,887] [INFO] KD Epoch [87/100] - Train Loss: 0.2269 | Val Loss: 0.2305 | Val Acc: 0.9337
+[2026-09-02 09:01:57,489] [INFO] KD Epoch [88/100] - Train Loss: 0.2264 | Val Loss: 0.2305 | Val Acc: 0.9337
+[2026-09-02 09:01:58,993] [INFO] KD Epoch [89/100] - Train Loss: 0.2266 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:02:00,511] [INFO] KD Epoch [90/100] - Train Loss: 0.2269 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:02:02,121] [INFO] KD Epoch [91/100] - Train Loss: 0.2268 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:02:03,667] [INFO] KD Epoch [92/100] - Train Loss: 0.2264 | Val Loss: 0.2305 | Val Acc: 0.9349
+[2026-09-02 09:02:05,187] [INFO] KD Epoch [93/100] - Train Loss: 0.2267 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:02:06,748] [INFO] KD Epoch [94/100] - Train Loss: 0.2266 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:02:08,277] [INFO] KD Epoch [95/100] - Train Loss: 0.2267 | Val Loss: 0.2305 | Val Acc: 0.9349
+[2026-09-02 09:02:09,806] [INFO] KD Epoch [96/100] - Train Loss: 0.2266 | Val Loss: 0.2306 | Val Acc: 0.9349
+[2026-09-02 09:02:11,350] [INFO] KD Epoch [97/100] - Train Loss: 0.2262 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:02:12,884] [INFO] KD Epoch [98/100] - Train Loss: 0.2269 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:02:14,417] [INFO] KD Epoch [99/100] - Train Loss: 0.2268 | Val Loss: 0.2306 | Val Acc: 0.9337
+[2026-09-02 09:02:15,940] [INFO] KD Epoch [100/100] - Train Loss: 0.2262 | Val Loss: 0.2305 | Val Acc: 0.9337
+[2026-09-02 09:02:15,941] [INFO] 
+--- Initiating Quantization-Aware Training (QAT) ---
+[2026-09-02 09:02:16,305] [INFO] QAT Epoch [01/20] - Fine-Tuning Loss: 0.3635
+[2026-09-02 09:02:16,671] [INFO] QAT Epoch [02/20] - Fine-Tuning Loss: 0.3774
+[2026-09-02 09:02:17,013] [INFO] QAT Epoch [03/20] - Fine-Tuning Loss: 0.3712
+[2026-09-02 09:02:17,355] [INFO] QAT Epoch [04/20] - Fine-Tuning Loss: 0.3683
+[2026-09-02 09:02:17,700] [INFO] QAT Epoch [05/20] - Fine-Tuning Loss: 0.3662
+[2026-09-02 09:02:18,042] [INFO] QAT Epoch [06/20] - Fine-Tuning Loss: 0.3622
+[2026-09-02 09:02:18,397] [INFO] QAT Epoch [07/20] - Fine-Tuning Loss: 0.3588
+[2026-09-02 09:02:18,742] [INFO] QAT Epoch [08/20] - Fine-Tuning Loss: 0.3593
+[2026-09-02 09:02:19,084] [INFO] QAT Epoch [09/20] - Fine-Tuning Loss: 0.3608
+[2026-09-02 09:02:19,426] [INFO] QAT Epoch [10/20] - Fine-Tuning Loss: 0.3596
+[2026-09-02 09:02:19,769] [INFO] QAT Epoch [11/20] - Fine-Tuning Loss: 0.3602
+[2026-09-02 09:02:20,117] [INFO] QAT Epoch [12/20] - Fine-Tuning Loss: 0.3602
+[2026-09-02 09:02:20,463] [INFO] QAT Epoch [13/20] - Fine-Tuning Loss: 0.3594
+[2026-09-02 09:02:20,808] [INFO] QAT Epoch [14/20] - Fine-Tuning Loss: 0.3623
+[2026-09-02 09:02:21,151] [INFO] QAT Epoch [15/20] - Fine-Tuning Loss: 0.3626
+[2026-09-02 09:02:21,494] [INFO] QAT Epoch [16/20] - Fine-Tuning Loss: 0.3598
+[2026-09-02 09:02:21,838] [INFO] QAT Epoch [17/20] - Fine-Tuning Loss: 0.3609
+[2026-09-02 09:02:22,183] [INFO] QAT Epoch [18/20] - Fine-Tuning Loss: 0.3605
+[2026-09-02 09:02:22,531] [INFO] QAT Epoch [19/20] - Fine-Tuning Loss: 0.3613
+[2026-09-02 09:02:22,875] [INFO] QAT Epoch [20/20] - Fine-Tuning Loss: 0.3640
+[2026-09-02 09:02:22,876] [INFO] BLOCK 4 COMPLETED: Training finished. Weights saved.
+[2026-09-02 09:02:22,888] [INFO] ================================================================================
+[2026-09-02 09:02:22,890] [INFO] STARTING BLOCK 5: EVALUATION & HARDWARE PROFILING
+[2026-09-02 09:02:22,890] [INFO] ================================================================================
+[2026-09-02 09:02:22,891] [INFO] Extracting KD Test Metrics...
+[2026-09-02 09:02:22,934] [INFO] Calculating INT8 Hardware Footprint...
+[2026-09-02 09:02:22,981] [INFO] Profiling Latency (Batch Size = 1)...
+[2026-09-02 09:02:23,684] [INFO] BLOCK 5 COMPLETED: Metrics and Hardware constraints logged.
+[2026-09-02 09:02:23,698] [INFO] ================================================================================
+[2026-09-02 09:02:23,699] [INFO] STARTING BLOCK 6: GENERATING PUBLICATION FIGURES
+[2026-09-02 09:02:23,700] [INFO] ================================================================================
+[2026-09-02 09:02:25,167] [INFO] All journal figures rendered and saved successfully.
+[2026-09-02 09:02:25,168] [INFO] ================================================================================
+[2026-09-02 09:02:25,168] [INFO] PIPELINE COMPLETED SUCCESSFULLY! Total Runtime: 0h 3m 02s
+[2026-09-02 09:02:25,169] [INFO] ================================================================================
+[2026-09-02 09:06:58,117] [INFO] ================================================================================
+[2026-09-02 09:06:58,118] [INFO] STARTING BLOCK 7: ADVANCED METRICS VISUALIZATION
+[2026-09-02 09:06:58,119] [INFO] ================================================================================
+[2026-09-02 09:06:59,298] [INFO] Advanced visualization suite successfully rendered to data/figures/
+[2026-09-02 09:26:22,325] [INFO] ================================================================================
+[2026-09-02 09:26:22,326] [INFO] STARTING BLOCK 8: PARETO FRONTIER & XAI PROFILING
+[2026-09-02 09:26:22,328] [INFO] ================================================================================
+[2026-09-02 09:26:23,173] [INFO] Pareto and XAI figures generated successfully.
+[2026-09-02 09:26:23,173] [INFO] ================================================================================
