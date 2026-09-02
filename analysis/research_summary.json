@@ -1,0 +1,14 @@
+{
+    "project_title": "A Distilled, Quantization-Aware TinyML Framework",
+    "metrics": {
+        "fp32_accuracy": 93.49,
+        "int8_accuracy": 87.9
+    },
+    "hardware": {
+        "fp32_size_kb": 35.57,
+        "int8_size_kb": 34.37,
+        "compression_ratio": 1.03,
+        "latency_ms": 0.643
+    },
+    "runtime": "0h 3m 02s"
+}
